@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="movieHaven">
 <head>
   <link type= "text/css" rel="stylesheet" href= "css/main.css"/>
   <title>Movie-Haven</title>
 
 </head>
-<body>
+<body ng-controller="MovieDetailsController">
   
 
-  <script src = 'js/jquery-2.1.1.js'></script>
-  <script src = 'js/app.js'></script>
+  <form ng-submit="findMovie()">
+    <input ng-model="movieName" type="text">
+    <button type="submit">Search</button>
+  </form>  
+  
+       
+
+  <script src="js/vendor/angular.js"></script>
+  <script src="js/vendor/angular-mocks.js"></script>
+  <script src="js/vendor/jquery-2.1.1.js"></script>
+  <script src="js/custom/app.js"></script>
 </body>  
 </html>
 
