@@ -1,0 +1,28 @@
+html, body {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.intro {
+  font-size: 3em;
+  text-align: center;
+  padding-top: 3em; 
+}
+
+#loading {
+  min-height: 30%;
+  min-width: 30%;
+}
+
+#container {
+  border: 1px solid black;
+  margin: 4% 10% 4%;
+}
+
+th, h3{
+  text-align: center;
+}
+
+td {
+  width: 500px;
+}
