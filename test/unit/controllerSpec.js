@@ -6,7 +6,7 @@ describe('MovieDetailsController', function () {
       scope = $rootScope.$new();
       movieInfoController = $controller('MovieDetailsController', {$scope:scope});
       httpBackend = $httpBackend;
-      httpBackend.expectJSONP('http://www.myapifilms.com/imdb?callback=JSON_CALLBACK&title='+ scope.movieName +'&format=JSONP').
+      httpBackend.expectJSONP(scope.url).
       respond([{countries: ["USA", "UK"], genres: ["Action", "Mystery", "Sci-Fi", "Thriller"]}]);
 
       

@@ -2,6 +2,12 @@
   var movieHaven = angular.module('movieHaven', []);
   movieHaven.controller('MovieDetailsController', function($scope, $http, $sce) {  
 
+    $scope.movieName = "";
+    $scope.url = 'http://www.myapifilms.com/imdb?callback=JSON_CALLBACK&title=' + $scope.movieName + '&format=JSONP&actors=S&trailer=1';
+    $http.jsonp($scope.url).success(function (data){
+      $scope.movieInfo = data;
+    });
+
     $scope.enableSearch = function() {
       $scope.hideIntro = true;
       $scope.hideLoading = false;  
@@ -22,8 +28,8 @@
         $scope.movieName = " ";
       }
 
-      var url = 'http://www.myapifilms.com/imdb?callback=JSON_CALLBACK&title=' + $scope.movieName + '&format=JSONP&actors=S&trailer=1'; 
-      $http.jsonp(url).success(function (data) {
+      $scope.url = 'http://www.myapifilms.com/imdb?callback=JSON_CALLBACK&title=' + $scope.movieName + '&format=JSONP&actors=S&trailer=1'; 
+      $http.jsonp($scope.url).success(function (data) {
         $scope.movieInfo = data;
 
         if( $scope.movieInfo.message === "Movie not found" || $scope.movieInfo.message === "IMDB Id and Title can not be empty" ) {
@@ -43,8 +49,9 @@
 
         $scope.movieName = "";
         $scope.disableSearch();
-        $scope.hideMovieInfo = false;
-        }        
+        $scope.hideMovieInfo = false;        
+        }    
+
       }).error(function(data, status, headers, config) {
         $scope.hideLoading = true;
         $scope.hideMovieNotFound = false;
