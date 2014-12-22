@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="movieHaven">
+<head>  
+  <link type= "text/css" rel="stylesheet" href= "css/vendor/bootstrap.css"/>
+  <link type= "text/css" rel="stylesheet" href= "css/custom/main.css"/>
+  <title>Movie-Haven</title>
+
+</head>
+<body ng-controller="MovieDetailsController">  
+    
+  <nav class="navbar navbar-inverse" role="navigation"> 
+    <form class="navbar-form navbar-left" role="search" ng-submit="findMovie()">
+      <div class="form-group">  
+        <input ng-model="movieName" class="form-control" type="text" placeholder="Movie Title">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>    
+  </nav>    
+
+  
+  <div class="intro" ng-hide="hideIntro">
+    <p>Search for movie information...</p>
+  </div>
+
+  <div class="intro" ng-hide="hideLoading">
+    <img src="image/loading.gif" id="loading">
+  </div>  
+
+  <div class="intro" ng-hide="hideMovieNotFound">
+    <p>Movie not found</p>
+  </div>
+
+  <div id="container" ng-hide="hideMovieInfo">
+    <table class="table">
+      <tr>
+        <th colspan="2">
+          <h3 ng-bind="movieInfo[0].title"></h3>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <iframe ng-src="{{video}}" alt="Video is not available" width="480" height="270" frameborder="no" scrolling="no" ></iframe>
+        </td>
+        <td>
+          <h4>Plot of Movie</h4>
+          <p ng-bind="movieInfo[0].plot"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Director</h4>
+          <p ng-bind="movieInfo[0].directors[0].name"></p>
+          <h4>Actors</h4>
+          <ul ng-repeat="actor in movieInfo[0].actors">
+            <li> {{actor.actorName}} as "{{actor.character}}"</li>
+          </ul> 
+         </td>
+        <td>
+          <h4>Locations</h4>
+          <ul ng-repeat="location in movieInfo[0].filmingLocations">
+            <li ng-bind="location"></li>
+          </ul> 
+          <h4>Genres</h4>
+          <ul ng-repeat="genre in movieInfo[0].genres">
+            <li ng-bind="genre"></li>
+          </ul> 
+          <h4>Year</h4>
+          <p ng-bind="movieInfo[0].year"></p>
+          <h4>Rating</h4>
+          <p ng-bind="movieInfo[0].rating"></p>
+        </td>
+      </tr>
+    </table>  
+  </div>      
+
+  <script src="js/vendor/angular.js"></script>
+  <script src="js/vendor/angular-mocks.js"></script>
+  <script src="js/vendor/jquery-2.1.1.js"></script>
+  <script src="js/custom/app.js"></script>
+</body>  
+</html>
+
+
+

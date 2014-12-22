@@ -1,0 +1,29 @@
+{
+  "name": "Movie-Haven_angular",
+  "version": "1.0.0",
+  "description": "Search for movies and watch trailer",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start test/karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-aadesokan/Movie-Haven_angular.git"
+  },
+  "keywords": [
+    "search"
+  ],
+  "author": "Adewunmi Adesokan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-aadesokan/Movie-Haven_angular/issues"
+  },
+  "homepage": "https://github.com/andela-aadesokan/Movie-Haven_angular",
+  "devDependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.2",
+    "protractor": "^1.5.0"
+  }
+}
