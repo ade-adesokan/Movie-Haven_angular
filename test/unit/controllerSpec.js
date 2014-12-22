@@ -4,10 +4,13 @@ describe('MovieDetailsController', function () {
     module('movieHaven');
     inject( function ($controller, $rootScope, $httpBackend) {
       scope = $rootScope.$new();
+      
       movieInfoController = $controller('MovieDetailsController', {$scope:scope});
+
       httpBackend = $httpBackend;
+      scope.findMovie();
       httpBackend.expectJSONP(scope.url).
-      respond([{countries: ["USA", "UK"], genres: ["Action", "Mystery", "Sci-Fi", "Thriller"]}]);
+      respond([{countries: ["USA", "UK"], genres: ["Action", "Mystery", "Sci-Fi", "Thriller"], trailer: {}}]);
 
       
     });
@@ -25,6 +28,6 @@ describe('MovieDetailsController', function () {
   it('should create "movieInfo" model with 2 properties fetched from xhr', function () {
     expect(scope.movieInfo).toBeUndefined();
     httpBackend.flush();
-    expect(scope.movieInfo).toEqual([{countries: ["USA", "UK"], genres: ["Action", "Mystery", "Sci-Fi", "Thriller"]}]);
+    expect(scope.movieInfo).toEqual([{countries: ["USA", "UK"], genres: ["Action", "Mystery", "Sci-Fi", "Thriller"], trailer: {}}]);
   });
 });
